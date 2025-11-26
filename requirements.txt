@@ -1,0 +1,11 @@
+streamlit
+yfinance
+pandas
+pandas_ta
+numpy
+torch
+plotly
+joblib
+scikit-learn
+matplotlib
+torch-directml
