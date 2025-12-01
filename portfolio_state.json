@@ -1,6 +1,6 @@
 {
   "initial_cash_balance": 1200000,
-  "realized_pnl": 4495.0,
+  "realized_pnl": 18342.0,
   "trade_history": [
     {
       "date": "2025-11-26 17:25",
@@ -19,6 +19,33 @@
       "buy_price": "\u20b9692.50",
       "sell_price": "\u20b9692.50",
       "pnl": 0.0
+    },
+    {
+      "date": "2025-11-29 13:02",
+      "ticker": "ATHERENERG.NS",
+      "action": "SELL",
+      "qty": 200.0,
+      "buy_price": "\u20b9692.50",
+      "sell_price": "\u20b9717.95",
+      "pnl": 5090.0
+    },
+    {
+      "date": "2025-11-29 13:03",
+      "ticker": "MUTHOOTFIN.NS",
+      "action": "SELL",
+      "qty": 20.0,
+      "buy_price": "\u20b93636.00",
+      "sell_price": "\u20b93744.20",
+      "pnl": 2164.0
+    },
+    {
+      "date": "2025-12-01 12:10",
+      "ticker": "AEGISVOPAK.NS",
+      "action": "SELL",
+      "qty": 450.0,
+      "buy_price": "\u20b9260.55",
+      "sell_price": "\u20b9275.20",
+      "pnl": 6593.0
     }
   ],
   "snapshot": {

@@ -523,7 +523,7 @@ with tab1:
                 legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
                 margin=dict(l=20, r=20, t=60, b=20)
             )
-            st.plotly_chart(fig_overall, use_container_width=True)
+            st.plotly_chart(fig_overall, width='stretch')
 
         # Holdings Table with Sell Buttons
         st.write("### 📋 Holdings")
@@ -622,7 +622,7 @@ with tab1:
                         height=300,
                         margin=dict(l=20, r=20, t=40, b=20)
                     )
-                    st.plotly_chart(fig_ind, use_container_width=True)
+                    st.plotly_chart(fig_ind, width='stretch')
 
     else:
         st.info("Your portfolio is empty. Add stocks using the form above.")
@@ -732,7 +732,7 @@ with tab2:
                                             xaxis_rangeslider_visible=False,
                                             margin=dict(l=10, r=10, t=40, b=10)
                                         )
-                                        st.plotly_chart(fig_signal, use_container_width=True)
+                                        st.plotly_chart(fig_signal, width='stretch')
                                         
                                         # Quick stats
                                         current = hist['Close'].iloc[-1]
@@ -802,7 +802,7 @@ with tab2:
                                             xaxis_rangeslider_visible=False,
                                             margin=dict(l=10, r=10, t=40, b=10)
                                         )
-                                        st.plotly_chart(fig_signal, use_container_width=True)
+                                        st.plotly_chart(fig_signal, width='stretch')
                                         
                                         current = hist['Close'].iloc[-1]
                                         prev_month = hist['Close'].iloc[-22] if len(hist) > 22 else hist['Close'].iloc[0]
@@ -965,14 +965,14 @@ with tab3:
                         fig_price = go.Figure()
                         fig_price.add_trace(go.Scatter(x=df_sim.index, y=df_sim['Close'], name="Close Price", line=dict(color='#1f77b4', width=2)))
                         fig_price.update_layout(title=f"{selected_ticker} Price History", xaxis_title="Date", yaxis_title="Price (₹)", height=400)
-                        st.plotly_chart(fig_price, use_container_width=True)
+                        st.plotly_chart(fig_price, width='stretch')
 
                         # Equity Curve
                         fig_equity = go.Figure()
                         fig_equity.add_trace(go.Scatter(x=df_sim.index, y=port_vals, name="AI Strategy", line=dict(color='#00ff00', width=2)))
                         fig_equity.add_trace(go.Scatter(x=df_sim.index, y=bnh_values, name="Buy & Hold", line=dict(color='gray', dash='dash')))
                         fig_equity.update_layout(title="Equity Curve Comparison", xaxis_title="Date", yaxis_title="Portfolio Value (₹)", height=400)
-                        st.plotly_chart(fig_equity, use_container_width=True)
+                        st.plotly_chart(fig_equity, width='stretch')
                         
                         # Trade Execution
                         fig_trades = go.Figure()
@@ -993,7 +993,7 @@ with tab3:
                         ))
                         
                         fig_trades.update_layout(title="Trade Execution Points (with P&L)", xaxis_title="Date", yaxis_title="Price (₹)", height=400)
-                        st.plotly_chart(fig_trades, use_container_width=True)
+                        st.plotly_chart(fig_trades, width='stretch')
                         
                         # Technical Indicators
                         st.subheader("Technical Indicators")
@@ -1005,7 +1005,7 @@ with tab3:
                             fig_rsi.add_hline(y=70, line_dash="dash", line_color="red")
                             fig_rsi.add_hline(y=30, line_dash="dash", line_color="green")
                             fig_rsi.update_layout(title="RSI (14)", height=300, yaxis_range=[0, 100])
-                            st.plotly_chart(fig_rsi, use_container_width=True)
+                            st.plotly_chart(fig_rsi, width='stretch')
                             
                         with col_tech2:
                             if 'MACD' in df_sim.columns:
@@ -1013,7 +1013,7 @@ with tab3:
                                 fig_macd.add_trace(go.Scatter(x=df_sim.index, y=df_sim['MACD'], name="MACD", line=dict(color='blue')))
                                 fig_macd.add_hline(y=0, line_dash="dash", line_color="gray")
                                 fig_macd.update_layout(title="MACD", height=300)
-                                st.plotly_chart(fig_macd, use_container_width=True)
+                                st.plotly_chart(fig_macd, width='stretch')
                         
                         # Forecast
                         st.subheader("🔮 Forecast for Tomorrow")
@@ -1261,12 +1261,12 @@ with tab3:
                 fig_bot.add_trace(go.Scatter(x=df_hist.index, y=df_hist['Portfolio Value'], name="Portfolio Value", line=dict(color='#00ff00', width=2)))
                 fig_bot.add_trace(go.Scatter(x=df_hist.index, y=df_hist['Cash'], name="Cash Held", line=dict(color='gray', dash='dot')))
                 fig_bot.update_layout(title="Bot Portfolio Performance", xaxis_title="Date", yaxis_title="Value (₹)", height=450)
-                st.plotly_chart(fig_bot, use_container_width=True)
+                st.plotly_chart(fig_bot, width='stretch')
                 
                 fig_risk = go.Figure()
                 fig_risk.add_trace(go.Scatter(x=df_hist.index, y=df_hist['Risk Level'], name="Risk % Per Trade", line=dict(color='orange')))
                 fig_risk.update_layout(title="Adaptive Risk Level (Self-Correction)", xaxis_title="Date", yaxis_title="Risk %", height=300)
-                st.plotly_chart(fig_risk, use_container_width=True)
+                st.plotly_chart(fig_risk, width='stretch')
                 
                 st.subheader("📜 Trade History")
                 if not df_trades.empty:
