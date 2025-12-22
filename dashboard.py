@@ -685,6 +685,8 @@ with tab2:
                         ticker = row['Ticker']
                         price = row.get('Price', 'N/A')
                         forecast = row.get('Forecast', 'N/A')
+                        qty = row.get('Sugg. Qty', '-')
+                        trend = row.get('Trend', '-')
                         
                         with st.container():
                             st.markdown(f"""
@@ -693,6 +695,7 @@ with tab2:
                                 <h4 style="margin: 0; color: #00ff00;">🟢 {ticker}</h4>
                                 <p style="margin: 5px 0; color: white;">Price: {price}</p>
                                 <p style="margin: 5px 0; color: #90EE90;">Forecast: {forecast}</p>
+                                <p style="margin: 5px 0; color: #ffffff; font-weight: bold;">Qty: {qty} | Trend: {trend}</p>
                             </div>
                             """, unsafe_allow_html=True)
                             
@@ -820,6 +823,16 @@ with tab2:
         progress_bar = st.progress(0)
         status_text = st.empty()
         
+        # --- Load Portfolio State for Sizing ---
+        try:
+            with open(PORTFOLIO_FILE, 'r') as f:
+                pf_state = json.load(f)
+            current_cash = pf_state.get('cash_balance', 100000.0)
+        except:
+            current_cash = 100000.0
+            
+        CONFIDENCE_THRESHOLD = 0.05  # 0.05% predicted return
+        
         for i, ticker in enumerate(NIFTY_250):
             status_text.text(f"🔍 Scanning {ticker}... ({i+1}/{len(NIFTY_250)})")
             df = get_data(ticker, start="2020-01-01") 
@@ -862,8 +875,22 @@ with tab2:
                     with torch.no_grad():
                         pred_next = model(X_tensor_next).item()
                     
+                    # --- Advanced Filtering Logic ---
+                    current_price = df['Close'].iloc[-1]
+                    ema_20 = df['EMA_20'].iloc[-1]
+                    ema_50 = df['EMA_50'].iloc[-1]
+                    current_vol = df['Volume'].iloc[-1]
+                    # Calculate Volume SMA (20) if not present, or just compute on the fly
+                    vol_ma_20 = df['Volume'].rolling(window=20).mean().iloc[-1]
+                    
+                    # Filters
+                    trend_bullish = ema_20 > ema_50
+                    vol_confirmed = current_vol > vol_ma_20
+                    is_confident = abs(pred_next) > CONFIDENCE_THRESHOLD
+                    
                     signal_type = "NEUTRAL"
                     status = "FLAT"
+                    suggested_qty = 0
                     
                     if in_position:
                         status = "HOLDING"
@@ -873,8 +900,17 @@ with tab2:
                             signal_type = "HOLD"
                     else:
                         status = "FLAT"
-                        if pred_next > 0.0:
+                        # Only BUY if ALL conditions met: Positive Pred + Confidence + Trend + Volume
+                        if pred_next > 0.0 and is_confident and trend_bullish and vol_confirmed:
                             signal_type = "BUY"
+                            
+                            # Position Sizing: 
+                            # Base 10% of cash. Scale up slightly by confidence.
+                            # Cap at 20% of cash to be safe.
+                            base_alloc = current_cash * 0.10
+                            conf_multiplier = 1 + (abs(pred_next) * 5) # e.g. 0.1% pred -> 1.005x
+                            alloc_amt = min(base_alloc * conf_multiplier, current_cash * 0.20)
+                            suggested_qty = max(1, int(alloc_amt / current_price))
                         else:
                             signal_type = "WAIT"
                     
@@ -882,9 +918,11 @@ with tab2:
                         signals.append({
                             "Date": datetime.now().strftime("%Y-%m-%d"),
                             "Ticker": ticker,
-                            "Price": f"₹{df['Close'].iloc[-1]:.2f}",
+                            "Price": f"₹{current_price:.2f}",
                             "Forecast": f"{pred_next:.4f}%",
-                            "Current Pos": status,
+                            "Trend": "Bull" if trend_bullish else "Bear",
+                            "Vol > Avg": "Yes" if vol_confirmed else "No",
+                            "Sugg. Qty": suggested_qty if signal_type == "BUY" else "-",
                             "Action": signal_type
                         })
                         
@@ -894,12 +932,12 @@ with tab2:
         progress_bar.empty()
         
         if signals:
-            st.success(f"🎯 Found {len(signals)} actionable signals!")
+            st.success(f"🎯 Found {len(signals)} high-quality signals!")
             df_signals = pd.DataFrame(signals)
             df_signals.to_csv(SIGNALS_FILE, index=False)
             st.rerun()
         else:
-            st.info("No significant Buy/Sell signals found for this week.")
+            st.info("No signals found matching strict criteria (Trend + Vol + Conf).")
 
 # ==========================================
 # TAB 3: TESTING (Backtest / Bot Simulation)

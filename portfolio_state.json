@@ -1,6 +1,6 @@
 {
   "initial_cash_balance": 1200000,
-  "realized_pnl": 18342.0,
+  "realized_pnl": 8032.0,
   "trade_history": [
     {
       "date": "2025-11-26 17:25",
@@ -46,6 +46,204 @@
       "buy_price": "\u20b9260.55",
       "sell_price": "\u20b9275.20",
       "pnl": 6593.0
+    },
+    {
+      "date": "2025-12-01 14:45",
+      "ticker": "MRPL.NS",
+      "action": "SELL",
+      "qty": 200.0,
+      "buy_price": "\u20b9161.45",
+      "sell_price": "\u20b9161.42",
+      "pnl": -6.0
+    },
+    {
+      "date": "2025-12-02 12:09",
+      "ticker": "INOXWIND.NS",
+      "action": "SELL",
+      "qty": 1000.0,
+      "buy_price": "\u20b9134.50",
+      "sell_price": "\u20b9133.09",
+      "pnl": -1410.0
+    },
+    {
+      "date": "2025-12-02 16:59",
+      "ticker": "ADANIENT.NS",
+      "action": "SELL",
+      "qty": 10.0,
+      "buy_price": "\u20b92422.30",
+      "sell_price": "\u20b92239.60",
+      "pnl": -1827.0
+    },
+    {
+      "date": "2025-12-03 18:34",
+      "ticker": "BIOCON.NS",
+      "action": "SELL",
+      "qty": 10.0,
+      "buy_price": "\u20b9396.85",
+      "sell_price": "\u20b9410.00",
+      "pnl": 132.0
+    },
+    {
+      "date": "2025-12-04 15:32",
+      "ticker": "PREMIERENE.NS",
+      "action": "SELL",
+      "qty": 100.0,
+      "buy_price": "\u20b9989.20",
+      "sell_price": "\u20b9941.95",
+      "pnl": -4725.0
+    },
+    {
+      "date": "2025-12-06 16:48",
+      "ticker": "JSWENERGY.NS",
+      "action": "SELL",
+      "qty": 200.0,
+      "buy_price": "\u20b9459.85",
+      "sell_price": "\u20b9461.95",
+      "pnl": 420.0
+    },
+    {
+      "date": "2025-12-08 11:33",
+      "ticker": "MRPL.NS",
+      "action": "SELL",
+      "qty": 500.0,
+      "buy_price": "\u20b9161.96",
+      "sell_price": "\u20b9153.76",
+      "pnl": -4100.0
+    },
+    {
+      "date": "2025-12-09 12:07",
+      "ticker": "BANDHANBNK.NS",
+      "action": "SELL",
+      "qty": 500.0,
+      "buy_price": "\u20b9149.78",
+      "sell_price": "\u20b9140.55",
+      "pnl": -4615.0
+    },
+    {
+      "date": "2025-12-10 11:28",
+      "ticker": "HAL.NS",
+      "action": "SELL",
+      "qty": 45.0,
+      "buy_price": "\u20b94441.60",
+      "sell_price": "\u20b94280.30",
+      "pnl": -7259.0
+    },
+    {
+      "date": "2025-12-11 12:08",
+      "ticker": "NLCINDIA.NS",
+      "action": "SELL",
+      "qty": 150.0,
+      "buy_price": "\u20b9239.88",
+      "sell_price": "\u20b9234.60",
+      "pnl": -792.0
+    },
+    {
+      "date": "2025-12-11 17:14",
+      "ticker": "MANAPPURAM.NS",
+      "action": "SELL",
+      "qty": 250.0,
+      "buy_price": "\u20b9277.10",
+      "sell_price": "\u20b9283.15",
+      "pnl": 1512.0
+    },
+    {
+      "date": "2025-12-12 17:16",
+      "ticker": "NAM-INDIA.NS",
+      "action": "SELL",
+      "qty": 150.0,
+      "buy_price": "\u20b9831.65",
+      "sell_price": "\u20b9870.50",
+      "pnl": 5828.0
+    },
+    {
+      "date": "2025-12-12 17:16",
+      "ticker": "APARINDS.NS",
+      "action": "SELL",
+      "qty": 25.0,
+      "buy_price": "\u20b98973.00",
+      "sell_price": "\u20b99023.50",
+      "pnl": 1262.0
+    },
+    {
+      "date": "2025-12-15 10:52",
+      "ticker": "ERIS.NS",
+      "action": "SELL",
+      "qty": 3.0,
+      "buy_price": "\u20b91666.00",
+      "sell_price": "\u20b91576.80",
+      "pnl": -268.0
+    },
+    {
+      "date": "2025-12-18 15:05",
+      "ticker": "JSWENERGY.NS",
+      "action": "SELL",
+      "qty": 25.0,
+      "buy_price": "\u20b9482.20",
+      "sell_price": "\u20b9471.45",
+      "pnl": -269.0
+    },
+    {
+      "date": "2025-12-18 15:05",
+      "ticker": "MAXHEALTH.NS",
+      "action": "SELL",
+      "qty": 90.0,
+      "buy_price": "\u20b91081.30",
+      "sell_price": "\u20b91049.80",
+      "pnl": -2835.0
+    },
+    {
+      "date": "2025-12-19 15:24",
+      "ticker": "HINDCOPPER.NS",
+      "action": "SELL",
+      "qty": 200.0,
+      "buy_price": "\u20b9382.30",
+      "sell_price": "\u20b9387.95",
+      "pnl": 1130.0
+    },
+    {
+      "date": "2025-12-19 15:25",
+      "ticker": "NBCC.NS",
+      "action": "SELL",
+      "qty": 50.0,
+      "buy_price": "\u20b9112.61",
+      "sell_price": "\u20b9113.47",
+      "pnl": 43.0
+    },
+    {
+      "date": "2025-12-19 15:25",
+      "ticker": "NYKAA.NS",
+      "action": "SELL",
+      "qty": 150.0,
+      "buy_price": "\u20b9268.52",
+      "sell_price": "\u20b9248.80",
+      "pnl": -2958.0
+    },
+    {
+      "date": "2025-12-19 15:59",
+      "ticker": "ASTRAZEN.NS",
+      "action": "SELL",
+      "qty": 8.0,
+      "buy_price": "\u20b99026.00",
+      "sell_price": "\u20b99091.50",
+      "pnl": 524.0
+    },
+    {
+      "date": "2025-12-22 12:48",
+      "ticker": "KPRMILL.NS",
+      "action": "SELL",
+      "qty": 175.0,
+      "buy_price": "\u20b9973.90",
+      "sell_price": "\u20b9974.00",
+      "pnl": 18.0
+    },
+    {
+      "date": "2025-12-23 00:11",
+      "ticker": "MCX.NS",
+      "action": "SELL",
+      "qty": 15.0,
+      "buy_price": "\u20b910162.00",
+      "sell_price": "\u20b910821.00",
+      "pnl": 9885.0
     }
   ],
   "snapshot": {
